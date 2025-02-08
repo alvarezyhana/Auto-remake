@@ -6,7 +6,7 @@ module.exports.config = {
   aliases: ['unsent', 'remove', 'rm'],
   usage: 'Unsent [reply]',
   description: "Unsend bot's message",
-  credits: 'Ulric dev',
+  credits: 'Deveploper',
   cooldown: 0
 };
 module.exports.run = async function({
