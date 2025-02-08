@@ -1,15 +1,13 @@
-const {
-  Hercai
-} = require('hercai');
-const herc = new Hercai();
+const axios = require('axios');
 module.exports.config = {
   name: 'ai',
   version: '1.0.0',
   role: 0,
   hasPrefix: false,
-  description: "An AI command powered by Hercai",
-  usage: "hercai [prompt]",
-  credits: 'Ulric dev',
+  aliases: ['gpt', 'openai'],
+  description: "An AI command powered by GPT-4",
+  usage: "Ai [promot]",
+  credits: 'Men',
   cooldown: 3,
 };
 module.exports.run = async function({
@@ -19,17 +17,18 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(`Please provide a question or statement after 'ai'. For example: 'ai What is the capital of France?'`, event.threadID, event.messageID);
+    api.sendMessage(`Hello how I can help you today?`, event.threadID, event.messageID);
     return;
   }
-  api.sendMessage(`🔍 "${input}"`, event.threadID, event.messageID);
+  api.sendMessage(``, event.threadID, event.messageID);
   try {
-    const response = await herc.question({
-      model: "v3",
-      content: input
-    });
-    api.sendMessage(response.reply, event.threadID, event.messageID);
+    const {
+      data
+    } = await axios.get(`https://kaiz-apis.gleeze.com/api/gpt-3.5?q=${encodeURIComponent(input)}`);
+    const response = data.response;
+    api.sendMessage( response + , event.threadID, event.messageID);
   } catch (error) {
     api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
   }
 };
+  
