@@ -19,7 +19,7 @@ module.exports.run = async function ({api, event, args}) {
   const axios = require('axios');
   let ask = args.join(' ');
   if (!ask) {
-    return api.sendMessage('✨ 𝗔𝗻𝗼𝘁𝗵𝗲𝗿-𝗠𝗲\n━━━━━━━━━━━\n\nplease provide a question.', event.threadID, event.messageID)
+    return api.sendMessage('🤖 𝗔𝗹𝘃𝗮𝗿𝗲𝘇 𝗔𝗜\n━━━━━━━━━━━\n\nplease provide a question.', event.threadID, event.messageID)
   }
 
   const res = await axios.get(`https://kaiz-apis.gleeze.com/api/gpt-4o?q=${ask}&uid=${event.senderID}`);
@@ -27,7 +27,7 @@ module.exports.run = async function ({api, event, args}) {
   if (res.error) {
     return api.sendMessage('having some unexpected error while fetching api.', event.threadID, event.messageID)
   } else {
-    return api.sendMessage(`✨ 𝗔𝗻𝗼𝘁𝗵𝗲𝗿-𝗠𝗲\n━━━━━━━━━━━\n\n${reply}\n\nby Metoushela Walker and Ulric Atayi`, event.threadID, event.messageID)
+    return api.sendMessage(`🤖 𝗔𝗹𝘃𝗮𝗿𝗲𝘇 𝗔𝗜\n━━━━━━━━━━━\n\n${reply}\n\nby Alvarez Walker and Ulric Atayi`, event.threadID, event.messageID)
   }
   } catch (error) {
     return api.sendMessage('having some unexpected error', event.threadID, event.messageID)
